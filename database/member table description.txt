@@ -15,3 +15,15 @@ https://www.mysqltutorial.org/mysql-boolean/
 MySQL does not have built-in Boolean type. However, it uses TINYINT(1) instead. To make it more convenient, MySQL provides BOOLEAN or BOOL as the synonym of TINYINT(1).
 
 In MySQL, zero is considered as false, and non-zero value is considered as true. To use Boolean literals, you use the constants TRUE and FALSE that evaluate to 1 and 0 respectively.
+
+table name:
+personnel:
+username VARCHAR(23)
+password VARCHAR(32)
+is_admin tinyint(1) - true or false.
+
+additional columns for table: dvd
+number_of_star_ratings int(9)
+total_stars int(10)
+average_star_rating decimal (2,1) (2 digits, 1 after decimal place, the other before. e.g. 3.1)
+Defaults to null when no ratings have been made

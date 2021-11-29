@@ -22,8 +22,7 @@ require "connection_script.php";
 
 $sql_condition = '1';
 
-if (
-    array_key_exists('title', $_POST) && array_key_exists('genre', $_POST)
+if (array_key_exists('title', $_POST) && array_key_exists('genre', $_POST)
     && array_key_exists('rating', $_POST) && array_key_exists('movie_year', $_POST)
 ) {
     $title = $_POST["title"];
@@ -61,7 +60,7 @@ if ($movie_year_present) {
 $stmt = $conn->prepare(
     '
     SELECT
-        id, title, rating, movie_year, status, studio, versions, recommended_retail_price, aspect,genre
+        id, title, rating, movie_year, status, studio, versions, recommended_retail_price, aspect, genre, average_star_rating
     FROM
         `dvd`
     WHERE
@@ -100,7 +99,16 @@ foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $row) {
     $version = $row["versions"];
     $price = $row["recommended_retail_price"];
     $ratio = $row["aspect"];
-	$genre = $row["genre"];
+    $genre = $row["genre"];
+
+    if ($row["average_star_rating"] == '') {
+        $star = 0.0;
+    } else {
+        $star = $row["average_star_rating"];
+    }
+
+    
+
     // echo "
     //     <tr>
     //         <td><a href='movie_details.php?id=$id'>$title</a></td>
@@ -132,7 +140,26 @@ foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $row) {
                         <p>Price: $price</p>
                         <p>Version: $version</p>
                         <p>Aspect Ratio: $ratio</p>
+                        <p class='star$id'>Average Star Rating: $star</p>
                     </div>
+                </div>
+                <div class='row'>
+                <div id='ratingDiv$id'>
+                <form></form>
+                <form class='ratingForm$id' action='#' method='post' id='starRating' readOnly=false>
+                    <fieldset class='rating'>
+                    <input type='text' name='id' value='$id'>
+                    <input type='radio' id='star5$id' name='stars' value='5' class='radio$id'/><label class ='full radioLabel$id' for='star5$id' title='5 stars'></label>
+                    <input type='radio' id='star4$id' name='stars' value='4' class='radio$id'/><label class ='full radioLabel$id' for='star4$id' title='4 stars'></label>
+                    <input type='radio' id='star3$id' name='stars' value='3' class='radio$id'/><label class ='full radioLabel$id' for='star3$id' title='3 stars'></label>
+                    <input type='radio' id='star2$id' name='stars' value='2' class='radio$id'/><label class ='full radioLabel$id' for='star2$id' title='2 stars'></label>
+                    <input type='radio' id='star1$id' name='stars' value='1' class='radio$id'/><label class ='full radioLabel$id' for='star1$id' title='1 star'></label>
+                    </fieldset>
+                </form>
+                </div>
+                <div>
+                    <h4 id='afterRating$id'></h4>
+                </div>
                 </div>
             </div>
             </div>

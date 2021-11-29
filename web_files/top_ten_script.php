@@ -34,47 +34,51 @@ require "connection_script.php";
 $stmt = $conn->prepare(
     '
 SELECT
-    id, title, rating, movie_year, search_count
+    id, title, rating, number_of_star_ratings, average_star_rating
 FROM
     `dvd`
 WHERE
     1
-ORDER BY search_count DESC
+ORDER BY average_star_rating DESC,
+number_of_star_ratings DESC
 LIMIT 10;
     '
 );
 
 $stmt->execute();
+$place = array("1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th");
+$i = 0;
 
-$rank = 1;
+echo "<table class='table'>";
 
-    echo "
+echo "
         <tr>
             <th>Rank</th>
             <th>Title</th>
             <th>Rating</th>
-            <th>Year</th>
-            <th class='large-only'>Searches</th>
+            <th class='large-only'>Votes</th>
+            <th>Star Rating</th>
         </tr>";
 
 foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $row) {
     $id = $row["id"];
     $title = htmlspecialchars($row["title"]);
     $rating = $row["rating"];
-    $movie_year = $row["movie_year"];
-    $search_count = $row["search_count"];
+    $number_of_ratings = $row["number_of_star_ratings"];
+    $search_count = $row["average_star_rating"];
 
     echo "
         <tr>
-            <td>$rank</td>
+            <td>" . $place[$i] . "</td>
             <td><a href='movie_details.php?id=$id'>$title</a></td>
             <td>$rating</td>
-            <td>$movie_year</td>
-            <td class='large-only'>$search_count</td>
+            <td class='large-only'>$number_of_ratings</td>
+            <td>$search_count</td>
         </tr>
     ";
-    $rank++;
+    $i++;
 }
 
+echo "</table>";
+
 $conn = null;
-?>

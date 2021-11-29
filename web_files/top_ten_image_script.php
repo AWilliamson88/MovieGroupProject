@@ -19,12 +19,13 @@ require "connection_script.php";
 $stmt = $conn->prepare(
     '
 SELECT
-    title, search_count
+    title, average_star_rating
 FROM
     `dvd`
 WHERE
     1
-ORDER BY search_count DESC
+ORDER BY average_star_rating DESC, 
+number_of_star_ratings DESC
 LIMIT 10;
     '
 );
@@ -41,7 +42,7 @@ $titles = array_fill(0, $max_results, "");
 $ranks = array_fill(0, $max_results, 0);
 
 foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $row) {
-    $search_count = $row["search_count"];
+    $search_count = $row["average_star_rating"];
 
     $titles[$count] = $row["title"];
     $search_counts[$count] = $search_count;

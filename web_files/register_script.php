@@ -8,15 +8,15 @@ $lname = $_POST["lname"];
 $email = $_POST["email"];
 
 if (isset($_POST["newsletter"]) && $_POST["newsletter"] == "newsletterYes") {
-  $newsletter = 1;
+    $newsletter = 1;
 } else {
-  $newsletter = 0;
+    $newsletter = 0;
 }
 
 if (isset($_POST["newsflash"]) && $_POST["newsflash"] == "newsflashYes") {
-  $newsflash = 1;
+    $newsflash = 1;
 } else {
-  $newsflash = 0;
+    $newsflash = 0;
 }
 
 $stmt = $conn->prepare("INSERT INTO member (first_name, last_name, email, newsletter_requested, newsflash_requested) VALUES (:fname, :lname, :email, :newsletter, :newsflash)");
@@ -33,7 +33,8 @@ $conn = null;
 
 alert($fname.$lname.$email.$_POST["newsletter"].$_POST["newsflash"]);
 
-function alert($msg) {
+function alert($msg)
+{
     echo "<script type='text/javascript'>alert('$msg');</script>";
 }
 ?>

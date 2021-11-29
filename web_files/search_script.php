@@ -21,16 +21,17 @@ require "connection_script.php";
 
 
 ?>
+
         <!-- Title Field -->
             <div class="row mb-3">
-                <label class="col-2 col-sm-2 col-md-2 col-xl-3 col-form-label">Title</label>
+                <label class="col-2 col-sm-2 col-md-2 col-xl-3 col-form-label" for="title">Title</label>
                 <div class="col-10 col-sm-10 col-md-9 col-xl-6">
                     <input type="text" class="form-control" autofocus name="title" id="title">
                 </div>
             </div>
             <!-- Genre Selector -->
                 <div class="row mb-3">
-                    <label class="col-2 col-sm-2 col-md-2 col-xl-3 col-form-label">Genre</label>
+                    <label class="col-2 col-sm-2 col-md-2 col-xl-3 col-form-label" for="genre">Genre</label>
                     <div class="col-10 col-sm-10 col-md-9 col-xl-6">
                         <select name="genre" class="form-select" id="genre">
                             <option value="">(Any)</option>
@@ -57,7 +58,7 @@ require "connection_script.php";
                 </div>
             <!-- Rating Selector -->
                 <div class="row mb-3">
-                    <label class="col-2 col-sm-2 col-md-2 col-xl-3 col-form-label">Rating</label>
+                    <label class="col-2 col-sm-2 col-md-2 col-xl-3 col-form-label" for="rating">Rating</label>
                     <div class="col-10 col-sm-10 col-md-9 col-xl-6">
                         <select name="rating" class="form-select" id="rating">
                             <option value="">(Any)</option>
@@ -87,7 +88,7 @@ require "connection_script.php";
                 </div>
             <!-- Year Field -->
                 <div class="row mb-3">
-                    <label class="col-2 col-sm-2 col-md-2 col-xl-3 col-form-label">Year</label>
+                    <label class="col-2 col-sm-2 col-md-2 col-xl-3 col-form-label" for="movie_year">Year</label>
                     <div class="col-10 col-sm-10 col-md-9 col-xl-6">
                         <input type="number" class="form-control" min="1800" max="2099"
                             name="movie_year" id="movie_year">
@@ -102,9 +103,9 @@ require "connection_script.php";
                 </div>
             <!-- If the search form was submitted include the results table. -->
                 <?php 
-                    if (isset($_POST['submit'])) {
-                        include 'search_results.php';
-                    }
+                if (isset($_POST['submit'])) {
+                    include 'search_results.php';
+                }
                 ?>
 
                 

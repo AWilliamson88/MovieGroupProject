@@ -1,177 +1,40 @@
-/*
-
-    RAD - 
-    Team Name: ICA Designs
-    Team Members:
-        Ivan Ng
-        Caspian Maclean
-        Andrew Williamson
-    Date: 05/11/2021
-    Sprint: One
-    Task: Make all the pages responsive.
-*/
-
-body {
-  background-color: rgb(255, 255, 255);
+body{background-color:#fff}
+nav{background-color:#fff;border-bottom:#000}
+nav ul{list-style-type:none;padding:0,0,0,0}
+th{border:2px solid #000;border-collapse:collapse;border-left:1px solid #000;border-right:1px solid #000;background-color:#5e60ce!important;color:#fff}
+td{border:1px solid #000;border-collapse:collapse;padding:4px}
+td a{display:block}
+@media only screen and (max-width:600px){
+.large-only{display:none}
 }
-
-/* Navigation pane formatting */
-
-nav {
-  background-color: rgb(255, 255, 255);
-  border-bottom: #000000;
+.details-list label{width:100px;text-align:right;padding-right:8px}
+form label{display:inline-block;text-align:right}
+input,select{margin-bottom:20px}
+.button{margin-top:10px;margin-right:40px}
+.navbar{border-bottom:.5px solid #ccc}
+.navbar .navbar-nav .nav-link{color:#5e60ce;font-size:1.1em;position:relative}
+.navbar .navbar-nav .nav-link:hover{color:#5e60ce}
+.navbar .navbar-nav .nav-link .active{color:#fff}
+.navbar .navbar-nav .nav-link::after{position:absolute;bottom:0;left:0;right:0;margin:auto;background-color:#5e60ce;color:transparent;width:0%;content:'.';height:3px}
+.navbar .navbar-nav .nav-link:hover::after{width:100%}
+.navbar .navbar-nav .nav-link{transition:all .5s}
+@media only screen and (min-width:960px){
+.navbar .navbar-nav .nav-link{padding:1em .7em}
+.navbar{padding:0}
+.navbar .navbar-brand{padding:0 .7em}
 }
-
-nav ul {
-  list-style-type: none;
-  padding: 0, 0, 0, 0;
-}
-
-/* Table formatting */
-
-th {
-  border: 2px solid black;
-  border-collapse: collapse;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
-  background-color: #5E60CE !important;
-  color:#FFFFFF;
-}
-
-td {
-  border: 1px solid black;
-  border-collapse: collapse;
-  padding: 4px;
-}
-
-/* Make the whole table cell with a link in it clickable */
-
-td a {
-  display: block;
-}
-
-@media only screen and (max-width: 600px) {
-  .large-only {
-    display: none;
-  }
-}
-
-/* details page formatting */
-
-.details-list label {
-  width: 100px;
-  text-align: right;
-  padding-right: 8px;
-}
-
-/* form and input formatting */
-
-form label {
-  display: inline-block;
-  text-align: right;
-}
-
-input, select {
-  margin-bottom: 20px;
-}
-
-.button {
-  margin-top: 10px;
-  margin-right: 40px;
-}
-
-.navbar {
-  border-bottom:0.5px solid rgb(204, 204, 204);
-}
-
-.navbar .navbar-nav .nav-link {
-  color: #5E60CE;
-  font-size: 1.1em;
-  position: relative;
-}
-
-.navbar .navbar-nav .nav-link:hover {
-  color: #5E60CE;
-}
-
-.navbar .navbar-nav .nav-link .active {
-  color: #FFFFFF;
-}
-
-.navbar .navbar-nav .nav-link::after {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-  background-color: #5E60CE;
-  color: transparent;
-  width: 0%;
-  content: '.';
-  height: 3px;
-}
-
-.navbar .navbar-nav .nav-link:hover::after {
-  width: 100%;
-}
-
-.navbar .navbar-nav .nav-link {
-  transition: all 0.5s;
-}
-
-@media only screen and (min-width: 960px) {
-  .navbar .navbar-nav .nav-link {
-    padding: 1em 0.7em;
-  }
-  .navbar {
-    padding: 0;
-  }
-  .navbar .navbar-brand {
-    padding: 0 0.7em;
-  }
-}
-
-.hero-image {
-  background-image: url("./resources/bg-image.png");
-  height: 100vh;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-}
-
-.center-text {
-  height: 50vh !important;
-}
-
-.hero-banner h1 {
-  font-size: 48px;
-}
-.hero-banner .btn {
-  position: relative;
-  overflow: hidden;
-  z-index: 9;
-}
-.hero-banner .btn-primary {
-  color: #2f2f41;
-  background-color: rgba(1, 164, 121, 0.1);
-  border-color: #01a479;
-}
-.hero-banner .btn:before {
-  content: "";
-  background: #5E60CE;
-  width: 4px;
-  height: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: -1;
-  -webkit-transition: all 0.5s ease-in-out 0s;
-  -moz-transition: all 0.5s ease-in-out 0s;
-  -ms-transition: all 0.5s ease-in-out 0s;
-  -o-transition: all 0.5s ease-in-out 0s;
-  transition: all 0.5s ease-in-out 0s;
-}
-.hero-banner .btn:hover:before {
-  width: 100%;
-}
+.hero-image{background-image:url(resources/bg-image.png);height:100vh;background-position:center;background-repeat:no-repeat;background-size:cover;position:relative}
+.center-text{height:50vh!important}
+.hero-banner h1{font-size:48px}
+.hero-banner .btn{position:relative;overflow:hidden;z-index:9}
+.hero-banner .btn-primary{color:#2f2f41;background-color:rgba(1,164,121,.1);border-color:#01a479}
+.hero-banner .btn:before{content:"";background:#5e60ce;width:4px;height:100%;position:absolute;left:0;top:0;z-index:-1;-webkit-transition:all .5s ease-in-out 0s;-moz-transition:all .5s ease-in-out 0s;-ms-transition:all .5s ease-in-out 0s;-o-transition:all .5s ease-in-out 0s;transition:all .5s ease-in-out 0s}
+.hero-banner .btn:hover:before{width:100%}
+fieldset,label{margin:0;padding:0}
+.rating{border:none;float:left}
+.rating>input{display:none}
+.rating>label:before{margin:5px;font-family:FontAwesome;font-weight:900;display:inline-block;content:"\f005"}
+.rating>label{color:#ddd;float:right}
+.rating:not(:checked)>label:hover,.rating:not(:checked)>label:hover~label,.rating>input:checked~label{color:gold}
+.rating>input:checked+label:hover,.rating>input:checked~label:hover,.rating>input:checked~label:hover~label,.rating>label:hover~input:checked~label{color:#ffed85}
+.disabled{pointer-events:none}
